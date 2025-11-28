@@ -23,4 +23,3 @@ class AplikasiSiswa : Application() {
         super.onCreate()
         container = ContainerDataApp(context= this)
     }
-}
