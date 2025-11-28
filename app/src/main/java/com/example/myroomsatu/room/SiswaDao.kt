@@ -1,5 +1,8 @@
 package com.example.myroomsatu.room
-
+import androidx.room.Query
+import androidx.room.Insert
+import androidx.room.OnConflictStrategy
+import kotlinx.coroutines.flow.Flow
 import androidx.room.Dao
 
 @Dao
@@ -8,6 +11,6 @@ interface SiswaDao {
     fun getAllSiswa(): Flow<List<Siswa>>
 
 
-    @Insert(onConflict = onConflictStrategy.IGNORE)
+    @Insert(onConflict = OnConflictStrategy.IGNORE)
     suspend fun insert(siswa: Siswa)
 }
