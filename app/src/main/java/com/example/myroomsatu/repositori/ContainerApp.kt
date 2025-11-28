@@ -11,3 +11,12 @@ class ContaionerDataApp(private val context: Context):
                     siswaDao = DatabaseSiswa.getDatabase(context).siswaDao())
             }
         }
+
+class AplikasiSiswa : Application() {
+    lateinit var container: ContainerApp
+
+    override fun onCreate() {
+        super.onCreate()
+        container = ContainerDataApp(context= this)
+    }
+}
