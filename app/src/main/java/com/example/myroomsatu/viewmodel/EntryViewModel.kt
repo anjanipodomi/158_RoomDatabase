@@ -25,3 +25,10 @@ class EntryViewModel(private val repositoriSiswa: RepositoriSiswa) : ViewModel()
         }
     }
 }
+
+
+data class UIStateSiswa(
+    val detailSiswa: DetailSiswa = DetailSiswa(),
+    val isEntryValid: Boolean = false
+)
+
