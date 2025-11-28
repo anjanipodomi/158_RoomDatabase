@@ -1,5 +1,6 @@
 package com.example.myroomsatu.repositori
-
+import com.example.myroomsatu.room.Siswa
+import kotlinx.coroutines.flow.Flow
 import com.example.myroomsatu.room.SiswaDao
 
 interface RepositoriSiswa {
