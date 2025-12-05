@@ -1,9 +1,39 @@
-package com.example.myroomsatu.view.uicontroller
+package com.example.myroomsatu.view
+
+import com.example.myroomsatu.viewmodel.DetailViewModel.DetailSiswaUiState
+import androidx.compose.runtime.*
+import androidx.compose.runtime.saveable.rememberSaveable
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.verticalScroll
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.material3.*
+import androidx.compose.material3.AlertDialog
+import androidx.compose.material3.CardDefaults
+import androidx.compose.material3.FloatingActionButton
+import androidx.compose.material3.TextButton
+import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Edit
+import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.res.dimensionResource
+import androidx.annotation.StringRes
+import androidx.lifecycle.viewmodel.compose.viewModel
+import kotlinx.coroutines.launch
+import com.example.myroomsatu.viewmodel.DetailViewModel
+import com.example.myroomsatu.viewmodel.provider.PenyediaViewModel
+import com.example.myroomsatu.view.route.DestinasiDetailSiswa
+import com.example.myroomsatu.R
+import com.example.myroomsatu.room.Siswa
+import com.example.myroomsatu.viewmodel.toSiswa
+
+
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun DetailSiswaScreen(
-    //navigateToEditItem: (Int) -> Unit,
+    navigateToEditItem: (Int) -> Unit,
     navigateBack: () -> Unit,
     modifier: Modifier = Modifier,
     viewModel: DetailViewModel = viewModel(factory = PenyediaViewModel.Factory)
@@ -20,7 +50,7 @@ fun DetailSiswaScreen(
             val uiState = viewModel.uiDetailState.collectAsState()
             FloatingActionButton(
                 onClick = {
-                    //navigateToEditItem(uiState.value.detailSiswa.id)
+                    navigateToEditItem(uiState.value.detailSiswa.id)
                 },
                 shape = MaterialTheme.shapes.medium,
                 modifier = Modifier.padding(dimensionResource(id = R.dimen.padding_large))

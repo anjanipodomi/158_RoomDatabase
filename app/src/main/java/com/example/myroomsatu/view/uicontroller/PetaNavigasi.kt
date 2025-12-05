@@ -16,7 +16,8 @@ import com.example.myroomsatu.view.route.DestinasiDetailSiswa
 import androidx.navigation.navArgument
 import androidx.navigation.NavType
 import com.example.myroomsatu.view.route.DestinasiDetailSiswa.itemIdArg
-
+import com.example.myroomsatu.view.route.DestinasiEditSiswa
+import com.example.myroomsatu.view.EditSiswaScreen
 
 
 @Composable
@@ -35,25 +36,44 @@ fun HostNavigasi(
         modifier = Modifier) {
         composable(DestinasiHome.route) {
             HomeScreen(
-                navigateToItemEntry = {navController.navigate(DestinasiEntry.route)},
+                navigateToItemEntry = { navController.navigate(DestinasiEntry.route) },
 
                 navigateToItemUpdate = {
-                    navController.navigate("${DestinasiDetailSiswa.route}/${it}")}
+                    navController.navigate("${DestinasiDetailSiswa.route}/${it}")
+                }
             )
         }
 
         composable(DestinasiEntry.route) {
-            EntrySiswaScreen(navigateBack = {navController.popBackStack()})
+            EntrySiswaScreen(navigateBack = { navController.popBackStack() })
         }
 
-        composable(route = DestinasiDetailSiswa.routeWithArgs,
-            arguments= listOf(navArgument(itemIdArg) {
-                type= NavType.IntType
+        composable(
+            route = DestinasiEditSiswa.routeWithArgs,
+            arguments = listOf(navArgument(DestinasiEditSiswa.itemIdArg) {
+                type = NavType.IntType
             })
-        ){
+        ) {
+            EditSiswaScreen(
+                navigateBack = { navController.navigateUp() }
+            )
+        }
+
+
+        composable(
+            route = DestinasiDetailSiswa.routeWithArgs,
+            arguments = listOf(navArgument(itemIdArg) {
+                type = NavType.IntType
+            })
+        ) {
             DetailSiswaScreen(
-                //navigasiToEditItem = {navController.navigate("${DestinasiEditSiswa.route}/$it")},
-                { navController.navigateUp() })
+                navigateToEditItem = { id ->
+                    navController.navigate("${DestinasiEditSiswa.route}/$id")
+                },
+                navigateBack = {
+                    navController.navigateUp()
+                }
+            )
         }
     }
 }
