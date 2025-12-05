@@ -83,3 +83,17 @@ private fun BodyDetailDataSiswa(
         }
     }
 }
+
+@Composable
+fun DetailDataSiswa(
+    siswa: Siswa, modifier: Modifier = Modifier
+) {
+    Card(
+        modifier = modifier, colors = CardDefaults.cardColors(
+            containerColor = MaterialTheme.colorScheme.primaryContainer,
+            contentColor = MaterialTheme.colorScheme.onPrimaryContainer
+        )
+    ) {
+
+    }
+}
