@@ -17,4 +17,11 @@ class EditViewModel (
                 .toUiStateSiswa(true)
         }
     }
+
+    fun updateUiState(detailsSiswa: DetailSiswa) {
+        uiStateSiswa =
+            UIStateSiswa(detailsSiswa = detailsSiswa, isEntryValid = validasiInput(detailsSiswa))
+    }
+
+
 }
